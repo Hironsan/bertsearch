@@ -1,7 +1,15 @@
-version: '3.3'
+version: '3.7'
 services:
+  web:
+    build: ./web
+    ports:
+      - "5000:5000"
+    depends_on:
+      - elasticsearch
+      - bertserving
+
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.2
     ports:
       - "9200:9200"
     volumes:
@@ -9,6 +17,16 @@ services:
     tty: true
     environment:
       discovery.type: single-node
+
+  bertserving:
+    build: ./bertserving
+    ports:
+      - "5555:5555"
+      - "5556:5556"
+    environment:
+      - PATH_MODEL
+    volumes:
+      - "./cased_L-12_H-768_A-12:/model"
 volumes:
   es-data:
     driver: local

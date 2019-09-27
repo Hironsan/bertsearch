@@ -1,8 +1,7 @@
-from flask import Flask, render_template, jsonify, request, redirect, url_for
+from pprint import pprint
+from flask import Flask, render_template, jsonify, request
 from elasticsearch import Elasticsearch
 from bert_serving.client import BertClient
-bc = BertClient(output_fmt='list')
-client = Elasticsearch()
 SEARCH_SIZE = 10
 INDEX_NAME = "jobsearch"
 app = Flask(__name__)
@@ -10,11 +9,14 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('home.html')
+    return render_template('index.html')
 
 
 @app.route('/search')
 def analyzer():
+    bc = BertClient(ip='bertserving', output_fmt='list')
+    client = Elasticsearch('elasticsearch:9200')
+
     query = request.args.get('q')
     query_vector = bc.encode([query])[0]
 
@@ -36,10 +38,11 @@ def analyzer():
             "_source": {"includes": ["title", "text"]}
         }
     )
-    from pprint import pprint
+    print(query)
+    print(query_vector)
     pprint(response)
     return jsonify(response)
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host="0.0.0.0", port=5000)
