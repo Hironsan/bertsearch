@@ -1,4 +1,8 @@
-# BERT with Elasticsearch
+# Elasticsearch meets BERT
+
+Below is a job search example:
+
+![An example of bertsearch](./docs/example.png)
 
 ## Getting Started
 
