@@ -29,7 +29,7 @@ Below is a job search example:
 ```bash
 $ wget https://storage.googleapis.com/bert_models/2018_10_18/cased_L-12_H-768_A-12.zip
 $ unzip cased_L-12_H-768_A-12.zip
-$ export PATH_MODEL=cased_L-12_H-768_A-12
+$ export PATH_MODEL=./cased_L-12_H-768_A-12
 ```
 
 ### 2. Run Docker containers

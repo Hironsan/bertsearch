@@ -24,9 +24,9 @@ services:
       - "5555:5555"
       - "5556:5556"
     environment:
-      - PATH_MODEL
+      - PATH_MODEL=${PATH_MODEL}
     volumes:
-      - "./cased_L-12_H-768_A-12:/model"
+      - "${PATH_MODEL}:/model"
 volumes:
   es-data:
     driver: local
