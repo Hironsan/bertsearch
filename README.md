@@ -6,6 +6,8 @@ Below is a job search example:
 
 ## System architecture
 
+![System architecture](./docs/architecture.png)
+
 ## Getting Started
 
 ### 1. Download a pretrained BERT model
