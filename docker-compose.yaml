@@ -4,6 +4,8 @@ services:
     build: ./web
     ports:
       - "5000:5000"
+    environment:
+      - INDEX_NAME
     depends_on:
       - elasticsearch
       - bertserving

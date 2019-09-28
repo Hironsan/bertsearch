@@ -1,9 +1,11 @@
+import os
 from pprint import pprint
+
 from flask import Flask, render_template, jsonify, request
 from elasticsearch import Elasticsearch
 from bert_serving.client import BertClient
 SEARCH_SIZE = 10
-INDEX_NAME = "jobsearch"
+INDEX_NAME = os.environ['INDEX_NAME']
 app = Flask(__name__)
 
 
@@ -39,10 +41,9 @@ def analyzer():
         }
     )
     print(query)
-    print(query_vector)
     pprint(response)
     return jsonify(response)
 
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host='0.0.0.0', port=5000)

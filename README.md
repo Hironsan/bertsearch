@@ -32,14 +32,23 @@ $ unzip cased_L-12_H-768_A-12.zip
 $ export PATH_MODEL=./cased_L-12_H-768_A-12
 ```
 
-### 2. Run Docker containers
+### 2. Set environment variables
+
+You need to set a pretrained BERT model and Elasticsearch's index name as environment variables:
+
+```bash
+$ export PATH_MODEL=./cased_L-12_H-768_A-12
+$ export INDEX_NAME=jobsearch
+```
+
+### 3. Run Docker containers
 
 
 ```bash
 $ docker-compose up
 ```
 
-### 3. Create index
+### 4. Create index
 
 You can use the create index API to add a new index to an Elasticsearch cluster. When creating an index, you can specify the following:
 
@@ -80,12 +89,12 @@ curl -X PUT "localhost:9200/jobsearch?pretty" -H 'Content-Type: application/json
 
 **CAUTION**: The `dims` value of `text_vector` must need to match the dims of a pretrained BERT model. 
 
-### 4. Index documents
+### 5. Index documents
 
 ```python
 
 ```
 
-### 5. Open browser
+### 6. Open browser
 
 Go to <http://127.0.0.1:5000>.
