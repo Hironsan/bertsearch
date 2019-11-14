@@ -49,6 +49,8 @@ $ export INDEX_NAME=jobsearch
 $ docker-compose up
 ```
 
+**CAUTION**: If possible, assign high memory(more than `8GB`) to Docker's memory configuration because BERT container needs high memory.
+
 ### 4. Create index
 
 You can use the create index API to add a new index to an Elasticsearch cluster. When creating an index, you can specify the following:
