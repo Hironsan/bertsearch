@@ -1,3 +1,4 @@
-bert-serving-client==1.9.8
+bert-serving-client==1.9.9
+bert-serving-client==1.9.9
 elasticsearch==7.0.4
 Flask==1.1.1
