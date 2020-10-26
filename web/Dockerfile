@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.8.6-slim-buster
 COPY . /app
 WORKDIR /app
 RUN pip install -U pip
