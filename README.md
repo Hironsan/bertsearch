@@ -8,6 +8,11 @@ Below is a job search example:
 
 ![System architecture](./docs/architecture.png)
 
+## Requirements
+
+- Docker
+- Docker Compose >= [1.22.0](https://docs.docker.com/compose/release-notes/#1220)
+
 ## Getting Started
 
 ### 1. Download a pretrained BERT model
