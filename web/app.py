@@ -3,7 +3,7 @@ from pprint import pprint
 
 from flask import Flask, render_template, jsonify, request
 from elasticsearch import Elasticsearch
-from bert_serving.client import BertClient
+from clip_client import Client
 SEARCH_SIZE = 10
 INDEX_NAME = os.environ['INDEX_NAME']
 app = Flask(__name__)
@@ -16,11 +16,13 @@ def index():
 
 @app.route('/search')
 def analyzer():
-    bc = BertClient(ip='bertserving', output_fmt='list')
-    client = Elasticsearch('elasticsearch:9200')
+    bc = Client('grpc://172.17.0.7:51000')
+    #client = Elasticsearch('elasticsearch:9200')
+    client = Elasticsearch('localhost:9200')
 
     query = request.args.get('q')
-    query_vector = bc.encode([query])[0]
+    query_vector = bc.encode([query])[0].tolist()
+    
 
     script_query = {
         "script_score": {

@@ -5,8 +5,8 @@ import argparse
 import json
 
 import pandas as pd
-from bert_serving.client import BertClient
-bc = BertClient(output_fmt='list')
+from clip_client import Client
+bc = Client('grpc://172.17.0.7:51000')
 
 
 def create_document(doc, emb, index_name):
@@ -15,7 +15,7 @@ def create_document(doc, emb, index_name):
         '_index': index_name,
         'text': doc['text'],
         'title': doc['title'],
-        'text_vector': emb
+        'text_vector': emb.tolist()
     }
 
 
